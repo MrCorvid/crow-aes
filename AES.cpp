@@ -23,16 +23,17 @@ The primary source document is the NIST official FIPS PUB 197 standard definitio
 All other sources were supplementary.
 */
 
-//TODO: Fix cout flags to not remain static, but save the existing flag, change it when needed, then revert it.
-//TODO: Allow for inputting from, encryption of, and outputting to files
-//TODO: Implement 192 and 256 bit keys
-//TODO: Create a command line interface and handling program
-//TODO: Create a proper API/Interface for use in future code
-//TODO: Remove STD Namespace
-//TODO: Make code production-ready by analyzing known vectors of attack on insecure implementations
-//TODO: Add proper block slicing and padding
-//TODO: Implement CBC
-//TODO: Implement Equivalent Inverse Cipher
+//TODO: #1 Remove Memcopy and properly refernce all variables as needed
+//TODO: #2 Remove STD Namespace
+//TODO: #3 Create a proper API/Interface for use in future code
+//TODO: #4 Add proper block slicing and padding
+//TODO: #5 Allow for inputting from, encryption of, and outputting to files
+//TODO: #6 Fix cout flags to not remain static, but save the existing flag, change it when needed, then revert it.
+//TODO: #7 Make code production-ready by analyzing known vectors of attack on insecure implementations
+//TODO: #8 Implement 192 and 256 bit keys
+//TODO: #9 Create a command line interface and handling program
+//TODO: #10 Implement CBC
+//TODO: #11 Implement Equivalent Inverse Cipher
 
 void AES::subBytes(unsigned char inputBlock[16], unsigned char (&outputBlock)[16])
 {
@@ -179,8 +180,6 @@ void AES::invMixColumns(unsigned char inputBlock[16], unsigned char (&outputBloc
     }
 }
 
-
-
 void AES::printKey(unsigned char round)
 {
     string s;
@@ -305,6 +304,7 @@ void AES::keySchedule()
     }
 }
 
+//memcopy is an artifact of original setup, to be fixed
 unsigned char* AES::Cipher(unsigned char testBlock[16], bool print)
 {
     unsigned char testOutput[16];
@@ -363,6 +363,7 @@ unsigned char* AES::Cipher(unsigned char testBlock[16], bool print)
     return testBlock;
 }
 
+//memcopy is an artifact of original setup, to be fixed
 unsigned char* AES::invCipher(unsigned char testBlock[16], bool print)
 {
     unsigned char testOutput[16];
